@@ -1,17 +1,22 @@
-const express = require('express');
+const express = require('express');  // Package Import
 const dotenv = require('dotenv');
-const authRoutes = require("./routes/auth.routes.js");
+
+const authRoutes = require("./routes/auth.routes.js");  // File Imports
+const connectToMongoDB = require('./db/connectMongoDB.js');
+
+const app = express(); // Initialize Express app // Variables
+const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 
-const app = express(); // Initialize Express app
-
-const PORT = process.env.PORT || 5000;
-
-app.get("/", (req, res) => {
-    res.send("Hello application!");
-});
-
+app.use(express.json()); //to parse the incoming request with json(from req.body)
 app.use("/api/auth", authRoutes);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.get("/", (req, res) => {
+//     res.send("Hello application!");
+// });
+
+app.listen(PORT, () => {
+    connectToMongoDB();
+    console.log(`Server running on port ${PORT}`)
+});
