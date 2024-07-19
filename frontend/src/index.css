@@ -17,16 +17,16 @@ body{
 }
 
 ::-webkit-scrollbar-track{
-    backdround:#555;
+    background:#555;
 }
 
 ::-webkit-scrollbar-thumb{
-    backdround:#121212;
+    background:#121212;
     border-radius:5px;
 }
 
 ::-webkit-scrollbar-thumb:hover{
-    backdround:#242424;
+    background:#242424;
 }
 
 
